@@ -1,0 +1,383 @@
+@import 'normalize.css';
+@import './fonts/fonts.scss';
+
+body {
+  background: url('./assets/background.avif');
+  font: 24px/32px 'DynaPuff';
+}
+
+.main {
+  max-width: 1440px;
+  margin: auto;
+  padding: 50px;
+  box-sizing: border-box;
+}
+
+.title {
+  margin: 0 0 30px;
+  text-align: center;
+
+  font: 32px/36px 'DynaPuff';
+}
+
+.gallows {
+  position: relative;
+  width: fit-content;
+}
+
+.head,
+.body,
+.arm,
+.leg,
+ {
+  position: absolute;
+  top: 24%;
+  right: 0;
+}
+
+.body {
+  top: 40%;
+  width: 80px;
+  height: 200px;
+  right: 2%;
+}
+
+.arm {
+  top: 39%;
+  right: 12%;
+}
+
+.leg {
+  top: 73%;
+  right: 12%;
+}
+
+.arm-right,
+.leg-right {
+  transform: rotate(90deg);
+  right: -13%;
+}
+
+.game {
+  display: flex;
+  justify-content: space-between;
+}
+
+.question {
+  margin-top: 80px;
+}
+
+.question_container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 50px;
+  max-width: 800px;
+  margin: auto;
+  margin-bottom: 50px;
+}
+
+.word {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.letter {
+  position: relative;
+  width: 50px;
+  height: 40px;
+
+  font: 34px/38px 'DynaPuff';
+  text-align: center;
+  
+  &:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 50px;
+    height: 4px;
+  
+    background-color: black;
+  }
+}
+
+.correct_letter {
+  &:after {
+    display: none;
+  }
+}
+
+.hint,
+.incorrect {
+  text-align: center;
+}
+
+.hint_title,
+.incorrect_title,
+.answer_title {
+  margin-right: 15px;
+}
+
+.incorrect_counter {
+  display: inline-block;
+  color: red;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.virtual_keyboard {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  max-width: 660px;
+  margin: auto;
+}
+
+.key {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+
+  background-color: rgb(88 56 175);
+  border-radius: 10px;
+  
+  cursor: pointer;
+  transition: 0.3s ease;
+
+  color: white;
+  font: 30px/34px 'DynaPuff';
+
+  &:hover {
+    background-color: rgb(130, 99, 214);
+  }
+}
+
+.pressed {
+  background-color: rgb(206, 157, 239);
+  pointer-events: none;
+
+  &:hover {
+  background-color: rgb(206, 157, 239);
+  }
+}
+
+.play_again {
+  padding: 20px;
+
+  border: none;
+  background-color: rgb(88 56 175);
+  border-radius: 10px;
+  transition: 0.3s ease;
+
+  color: white;
+  cursor: pointer;
+
+  &:hover {
+    background-color: rgb(130, 99, 214);
+  }
+}
+
+.modal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+
+  width: 500px;
+  padding: 25px;
+  box-sizing: border-box;
+  
+  background-color: rgb(239, 215, 255);
+  border-radius: 20px;
+}
+
+.answer {
+  margin-bottom: 30px;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+
+  transition: 0.7s ease;
+
+  background-color: black;
+  opacity: 0.7;
+}
+
+.correct_word {
+  font-weight: 700;
+}
+
+@media screen and (max-width: 1280px) {
+  .gallows {
+    height: 450px;
+  }
+
+  .game {
+    display: block;
+  }
+
+  .gallows_pic {
+    max-height: 100%;
+  }
+
+  .head {
+    right: -1%;
+    width: 90px;
+    height:  90px;
+  }
+
+  .body {
+    top: 43%;
+    width: 80px;
+    height: 140px;
+    right: 0;
+  }
+
+  .arm,
+  .leg {
+    width: 80px;
+    height:  80px;
+    top: 42%;
+    right: 13%;
+  }
+
+  .leg {
+    top: 73%;
+    right: 13%;
+  }
+
+  .arm-right,
+  .leg-right {
+    right: -13%;
+  }
+
+}
+
+@media screen and (max-width: 768px) {
+  .main {
+    padding: 15px;
+  }
+
+  .gallows {
+    height: 400px
+  }
+
+  .head {
+    right: -3%;
+  }
+
+  .body {
+    top: 45%;
+    right: 0;
+  }
+
+  .arm {
+    top: 44%;
+    right: 14%;
+  }
+
+  .leg {
+    top: 78%;
+    right: 14%;
+  }
+
+  .arm-right,
+  .leg-right {
+    right: -15%;
+  }
+
+  .word {
+    max-width: 100%;
+    gap: 5px;
+  }
+
+  .letter {
+    width: 30px;
+    font: 28px/32px 'DynaPuff';
+
+    &:after {
+      max-width: 20px;
+    }
+  }
+
+  .hint_text {
+    font: 20px/24px 'DynaPuff';
+  }
+
+  .key {
+    width: 50px;
+    height: 50px;
+  }
+
+  .modal {
+    max-width: 300px
+  }
+
+  .answer {
+    gap: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .gallows {
+    height: 300px
+  }
+
+  .head {
+    right: -5%;
+    width: 70px;
+    height:  70px;
+  }
+
+  .body {
+    top: 46%;
+    right: -2%;
+    width: 60px;
+    height:  100px;
+  }
+
+  .arm,
+  .leg {
+    top: 45%;
+    right: 12%;
+    width: 60px;
+    height:  60px;
+  }
+
+  .leg {
+    top: 78%;
+    right: 14%;
+  }
+
+  .arm-right,
+  .leg-right {
+    right: -17%;
+  }
+
+}
